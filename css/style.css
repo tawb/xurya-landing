@@ -1,3 +1,4 @@
+/* "::" means :selecting an existing element based on its state or position.*/
 * {
     margin: 0;
     padding: 0;
@@ -43,6 +44,7 @@ header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 #logo img {
   height: 28px;
@@ -50,6 +52,30 @@ header {
 }
 
 
+#logo:hover {
+    transform: scale(1.05);
+    opacity: 0.85;
+    color: #00D47E;
+}
+.nav-links a {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;/*pushes the underline slightly below the text instead of sitting right against it*/
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s ease;/*width changes smooth over 0.3 seconds*/
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
 .nav-links li a {
     color: #000;
     text-decoration: none;
@@ -80,6 +106,8 @@ header {
     font-size: 15px;
     font-weight: 500;
     font-family: inherit;
+    transition: all 0.3s ease;
+
     
 }
 
@@ -88,9 +116,18 @@ header {
     border: 1px solid #F2F4F4;    
 }
 
+
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1);
+}
+
 .btn-outline:hover {
-    border-color: #00D47E;
-    color: #00D47E;
+    background-color: #000000;
+    color: #ffffff;
+    transform: translateY(-3px);
 }
 
 .btn-primary {
@@ -99,10 +136,7 @@ header {
     color: #fff;
 }
 
-.btn-primary:hover {
-    background: #16a34a;            
-    border-color: #16a34a;
-}
+
 .hero {
     padding: 0 20px;
 }
@@ -112,7 +146,7 @@ header {
     min-height: 600px;
     border-radius: 30px;
     background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)),
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)),/* to make it a bit dark*/
         url('../assets/images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
@@ -127,7 +161,7 @@ header {
 .tagline {
     font-size: 16px;
     margin-bottom: 40px;
-    opacity: 0.9;
+    opacity: 0.9;/*visible slightly see-through because its 90*/
 }
 
 .hero h1 {
@@ -152,31 +186,77 @@ header {
     align-items: center;
     gap: 8px;
     font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+
+.hero-link span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.hero-link:hover {
+    opacity: 0.8;
+}
+
+.hero-link:hover span {
+    transform: translate(3px, -3px);/*Moves an element from its current position without affecting other elements*/
 }
 .glass-card {
     position: absolute;
-    top: 80px;
-    right: 80px;
-    width: 300px;
-    padding: 14px;
+    top: 40px;
+    right: 90px;
+    width: 260px;
+    padding: 15px;
     border-radius: 28px;
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(1px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* wrapper so the dots button can sit on top of the image */
+
+.glass-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
 .glass-card-media {
+    overflow: hidden;
     position: relative;
 }
 
+.glass-card:hover .glass-card-img {
+    transform: scale(1.08);
+}
+
+.dots-btn:hover {
+    background-color: #ffffff;
+    transform: scale(1.1);
+}
+
+.dots-btn:hover span {
+    background-color: #000000;
+}
+
+
+.glass-card:hover .arrow-circle {
+    background-color: #ffffff;
+    color: #000000;
+    transform: rotate(45deg);
+}
+
 .glass-card-img {
-    width: 80%;
-    height: 220px;
+    width: 75%;
+    height: 180px;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 10px;
     display: block;
+    transition: transform 0.5s ease;
 }
 
 /* the "..." button */
@@ -196,6 +276,7 @@ header {
     align-items: center;
     justify-content: center;
     gap: 3px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .dots-btn span {
@@ -212,6 +293,9 @@ header {
     gap: 14px;
     padding: 18px 6px 8px;
     color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .glass-card-bottom p {
@@ -219,6 +303,7 @@ header {
     font-size: 15px;
     line-height: 1.4;
     font-weight: 300;
+    order: 2;
     
 }
 
@@ -232,6 +317,8 @@ header {
     justify-content: center;
     flex-shrink: 0;
     color: #fff;
+    display: inline-flex;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 .cards {
     position: absolute;
@@ -245,7 +332,7 @@ header {
     border-top-left-radius: 30px; /* normal rounded corner */
 }
 
-/* inverted curve — top right */
+/* inverted curve  top right */
 .cards::before {
     content: "";
     position: absolute;
@@ -258,7 +345,7 @@ header {
     box-shadow: 15px 15px 0 15px #fff; /* same color as card */
 }
 
-/* inverted curve — bottom left */
+/* inverted curve bottom left */
 .cards::after {
     content: "";
     position: absolute;
@@ -287,3 +374,93 @@ header {
     font-size: 13px;
     line-height: 1.4;
 }
+#trust {
+    padding: 80px 5%;
+    margin-top: 80px;
+    background-color: #ffffff;
+}
+
+
+#trust .header {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 80px;
+    max-width: 1100px;
+    margin: 0 auto 60px;
+}
+
+#trust .header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    max-width: 480px;
+    margin: 0;
+}
+
+#trust .header h2 .light {
+    font-weight: 400;
+}
+.light{
+    color: #8D959D;
+}
+
+#trust .header p {
+    max-width: 420px;
+    color: #6b7280;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+#trust .circles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-left: -15px;
+}
+
+#trust .circle:first-child {/*only  first child inside its parent.*/
+    margin-left: 0;
+}
+#trust .circle img {
+    max-width: 65%;
+    max-height: 40%;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    #trust .header {
+        flex-direction: column;
+    }
+    #trust .circles {
+        justify-content: center;
+    }
+}
+#trust .circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #f2f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#trust .circle:hover {
+    background-color: #ffffff;
+    border-color:#8D959D;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+}
+
+
+.glass-card-bottom .arrow-circle {
+    order: 1;
+}
+
+
