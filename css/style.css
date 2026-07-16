@@ -433,7 +433,7 @@ header {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 3px;
+    gap: 12px;
     margin-left: -15px;
 }
 
@@ -448,8 +448,8 @@ header {
 }
 
 #trust .circle {
-    width: 210px;
-    height: 210px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     background-color: var(--brand-light-gray);
     display: flex;
@@ -799,14 +799,6 @@ header {
 #testimonials {
     padding: 100px 5%;
     text-align: center;
-}
-
-#testimonials .section-heading {
-    font-size: 2.5rem;
-    font-weight: 500;
-    max-width: 700px;
-    margin: 0 auto 60px;
-    line-height: 1.3;
 }
 
 .testimonial-card {
@@ -1194,9 +1186,7 @@ header {
         text-align: center;
     }
 }
-/* ============================
-   RESPONSIVE: Header & Nav
-   ============================ */
+/* RESPONSIVE: Header & Nav */
 @media (max-width: 900px) {
     .container {
         flex-direction: column;
@@ -1213,9 +1203,7 @@ header {
     }
 }
 
-/* ============================
-   RESPONSIVE: Hero section
-   ============================ */
+/*  Hero section */
 @media (max-width: 900px) {
     .hero-inner {
         height: auto;
@@ -1236,35 +1224,163 @@ header {
     }
 }
 
-/* ============================
-   RESPONSIVE: Stat cards (.cards)
-   ============================ */
+/* Stat cards (.cards) */
 @media (max-width: 900px) {
-    .cards {
-        position: static;
-        flex-direction: column;
-        gap: 20px;
-        padding: 24px;
-        border-top-left-radius: 0;
-        width: 100%;
-    }
-
-    .cards::before,
-    .cards::after {
-        display: none;
-    }
-
-    .stat-card h2 {
-        font-size: 2.5rem;
-    }
+.cards {
+    position: static;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+    border-top-left-radius: 0;
+    width: 100%;
 }
 
-/* ============================
-   RESPONSIVE: Trust circles
-   ============================ */
+.cards::before,
+.cards::after {
+    display: none;
+}
+
+.stat-card h2 {
+    font-size: 2.5rem;
+}
+}
+
+/* 
+   Trust circles */
 @media (max-width: 600px) {
     #trust .circle {
         width: 130px;
         height: 130px;
     }
+}
+
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
+}
+.reveal.in-view { opacity: 1; transform: none; }
+#trust .circle { will-change: transform; }
+
+header { transition: box-shadow .35s ease, background-color .35s ease, padding .35s ease; }
+header.scrolled {
+    background-color: rgba(255,255,255,.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 28px rgba(0,0,0,.08);
+    padding: 4px 0;
+}
+
+.btn-prim, .get-touch-btn, .footer-cta-btn { position: relative; overflow: hidden; }
+.btn-prim::after, .get-touch-btn::after, .footer-cta-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(140px circle at var(--mx,50%) var(--my,50%),
+                rgba(255,255,255,.35), transparent 65%);
+    opacity: 0;
+    transition: opacity .35s ease;
+    pointer-events: none;
+}
+.btn-prim:hover::after, .get-touch-btn:hover::after, .footer-cta-btn:hover::after { opacity: 1; }
+
+.glass-card.tilting::before { opacity: 1; }
+
+    /* --- custom cursor:⚡--- */
+body.has-custom-cursor, body.has-custom-cursor * { cursor: none !important; }
+@keyframes boltPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50%      { transform: translate(-50%, -50%) scale(1.15); }
+}
+.cursor-bolt {
+      position: fixed;
+      top: -100px;
+      left: -100px;
+      font-size: 28px;
+      line-height: 1;
+      pointer-events: none;
+      z-index: 2147483647;
+      transform: translate(-50%, -50%);
+      filter: drop-shadow(0 0 6px rgba(0,212,126,.9)) drop-shadow(0 0 16px rgba(0,212,126,.65));
+      animation: boltPulse 1.6s ease-in-out infinite;
+      transition: font-size .25s ease;
+      user-select: none;
+    }
+.cursor-bolt.cursor-active {
+      font-size: 44px;
+      filter: drop-shadow(0 0 10px rgba(0,212,126,1)) drop-shadow(0 0 28px rgba(0,212,126,.9));
+    }
+    
+   
+/* --- footer : confetti + flash + toast -- */
+@keyframes confettiFall {
+      0%   { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+      100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)); opacity: 0; }
+    }
+@keyframes footerFlash {
+      0%   { transform: scale(0); opacity: .6; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+@keyframes toastGlow {
+      0%, 100% { box-shadow: 0 14px 34px rgba(0,0,0,.35), 0 0 0 0 rgba(0,212,126,.5); }
+      50%      { box-shadow: 0 14px 34px rgba(0,0,0,.35), 0 0 0 14px rgba(0,212,126,0); }
+    }
+.footer-flash {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      margin: -20px 0 0 -20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,126,.9), rgba(0,212,126,.15) 55%, transparent 75%);
+      animation: footerFlash 1s ease-out forwards;
+      pointer-events: none;
+      z-index: 9997;
+    }
+.footer-toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translate(-50%, 40px) scale(.7);
+      background: linear-gradient(135deg, var(--brand-green, #00D47E), var(--brand-green-dark, #059669));
+      color: #fff;
+      padding: 18px 30px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity .5s cubic-bezier(.34,1.8,.64,1), transform .5s cubic-bezier(.34,1.8,.64,1);
+      pointer-events: none;
+    }
+.footer-toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1);
+      animation: toastGlow 1.6s ease-out 1;
+    }
+.footer-toast .emoji { font-size: 1.3rem; }
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.15);
+  transform: scale(0);
+  pointer-events: none;
+  animation: rippleAnim 0.6s ease-out forwards;
+}
+
+@keyframes rippleAnim {
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
 }
