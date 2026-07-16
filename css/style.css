@@ -1,3 +1,18 @@
+:root {
+    --brand-green: #00D47E;
+    --brand-dark: #1E1E1E;
+    --brand-gray: #8D959D;
+    --brand-light-gray: #F2F4F4;
+    --white: #FFFFFF;
+
+    --brand-green-rgb: 0, 212, 126;
+    --white-rgb: 255, 255, 255;
+    --black-rgb: 0, 0, 0;
+
+    --brand-green-dark: #059669;
+    --text-secondary: #6B7280;
+    --border-light: #E5E7EB;
+}
 /* "::" means :selecting an existing element based on its state or position.*/
 * {
     margin: 0;
