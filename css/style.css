@@ -201,11 +201,8 @@ header {
     border-bottom: 1px solid rgba(var(--white-rgb), 0.5);
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 15px;
-    display: inline-flex;
-    align-items: center;
     gap: 6px;
+    font-size: 15px;
     transition: color 0.3s ease, opacity 0.3s ease;
 }
 
@@ -307,12 +304,10 @@ header {
 .glass-card-bottom {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 14px;
     padding: 18px 6px 8px;
     color: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .glass-card-bottom p {
@@ -329,12 +324,11 @@ header {
     height: 42px;
     border-radius: 50%;
     border: 1px solid rgba(var(--white-rgb), 0.4);
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     color: var(--white);
-    display: inline-flex;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 .cards {
