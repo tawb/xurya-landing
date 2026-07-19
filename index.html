@@ -34,7 +34,7 @@
         </div>
     </div>
 </header>
-<section class="hero">
+<section class="hero"> 
     <div class="hero-inner">
         <div class="hero-text">
              <p class="tagline">#1 Energy provider in the world</p>
@@ -269,26 +269,68 @@
     </button>
 </div>
 </div>
+<footer class="site-footer">
+    <div class="footer-cta">
+        <div class="footer-cta-left">
+            <h2>It's time to support zero pollution, <span class="light">with renewable resources</span></h2>
+            <ul class="footer-checklist">
+                <li>
+                    <svg class="check-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="currentColor"/><path d="M7 12.5l3 3 7-7" stroke="var(--brand-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Experienced for more than 10 years
+                </li>
+                <li>
+                    <svg class="check-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="currentColor"/><path d="M7 12.5l3 3 7-7" stroke="var(--brand-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Support for the latest technology
+                </li>
+            </ul>
+        </div>
 
+        <div class="footer-cta-right">
+            <p>By increasing the effectiveness and efficiency of electricity use, the use of renewable resources is very profitable for all industrial services.</p>
+            <a href="#" class="footer-cta-btn">Get in touch <span>↗</span></a>
+        </div>
+    </div>
+
+    <div class="footer-middle">
+        <div class="footer-brand">
+            <img src="assets/images/logo.png" alt="" class="footer-logo">
+            <span>Xurya</span>
+        </div>
+
+        <nav class="footer-nav">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Features</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <div class="footer-socials">
+            <a href="#" aria-label="LinkedIn" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.5 8.75h3v11.75h-3zM9.5 8.75h2.9v1.6h.04c.4-.75 1.4-1.6 2.9-1.6 3.1 0 3.66 2 3.66 4.7v6.85h-3v-6.07c0-1.45-.03-3.3-2-3.3-2.02 0-2.33 1.58-2.33 3.2v6.17h-3z"/></svg>
+            </a>
+            <a href="#" aria-label="X (Twitter)" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 3H21l-6.6 7.5L22 21h-6.1l-4.8-6.3L5.6 21H3.4l7-8-7.6-10H9l4.3 5.7L18.9 3zm-1.1 16.2h1.2L7.3 4.7H6L17.8 19.2z"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.6-1.6h1.7V3.2C16.5 3.1 15.4 3 14.2 3c-2.6 0-4.4 1.6-4.4 4.5v2.3H7v3.2h2.8v8z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="social-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Xurya Inc. All rights reserved</p>
+        <div class="footer-legal">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    const box = document.getElementById('testimonialCarousel');/*get this exact element from the web page*/
-    const buttons = document.querySelectorAll('.testimonial-tab');/*get all of the elements from this class*/
-
-    function show(num) {
-        for (let i = 0; i < buttons.length; i++) {
-            buttons[i].classList.remove('active');
-        }
-        void buttons[num].offsetWidth;/* so it does not move so quick when restarting*/
-        buttons[num].classList.add('active');
-    }
-
-    box.addEventListener('slide.bs.carousel', function (e) {
-        show(e.to);
-    });
-
-    show(1);
-</script>
+<script src="./js/main.js"></script>
 </body>
 
 
