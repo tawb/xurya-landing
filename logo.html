@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Download Accurate Xurya Logo as PNG</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f3f4f6;
+    }
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+    button {
+      background: #00D27A;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 25px;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #00b568;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h3 style="margin-bottom: 25px; color: #111;">Xurya Precise Logo</h3>
+  
+  <!-- Exact vector representation of the Xurya logo -->
+  <svg id="logo-svg" width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="
+      M 36 36 
+      L 36 14 
+      L 64 14 
+      L 64 22
+      Q 64 36, 78 36 
+      L 86 36 
+      L 86 64 
+      L 64 64 
+      L 64 86 
+      L 36 86 
+      L 36 78
+      Q 36 64, 22 64 
+      L 14 64 
+      L 14 36 
+      Z" 
+      fill="#00D27A" />
+  </svg>
+  <br>
+  <button onclick="downloadPNG()">Download as PNG</button>
+</div>
+
+<canvas id="canvas" style="display:none;"></canvas>
+
+<script>
+  function downloadPNG() {
+    const svgElement = document.getElementById('logo-svg');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Exports a super crisp 1024x1024px file
+    const size = 1024; 
+    canvas.width = size;
+    canvas.height = size;
+    
+    const svgString = new XMLSerializer().serializeToString(svgElement);
+    const svgBlob = new Blob([svgString], {type: 'image/svg+xml;charset=utf-8'});
+    const URL = window.URL || window.webkitURL || window;
+    const blobURL = URL.createObjectURL(svgBlob);
+    
+    const image = new Image();
+    image.onload = function() {
+        ctx.clearRect(0, 0, size, canvas.height);
+        ctx.drawImage(image, 0, 0, size, size);
+        
+        const pngURL = canvas.toDataURL('image/png');
+        const downloadLink = document.createElement('a');
+        downloadLink.href = pngURL;
+        downloadLink.download = 'xurya-logo-perfect.png';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    };
+    image.src = blobURL;
+  }
+</script>
+
+</body>
+</html>
