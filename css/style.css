@@ -419,6 +419,9 @@ header {
 #trust .header h2 .light {
     font-weight: 400;
 }
+.light{
+    color: var(--brand-gray);
+}
 
 #trust .header p {
     max-width: 420px;
