@@ -1,4 +1,21 @@
 /* "::" means :selecting an existing element based on its state or position.*/
+
+:root {
+    --brand-green: #00D47E;
+    --brand-dark: #1E1E1E;
+    --brand-gray: #8D959D;
+    --brand-light-gray: #F2F4F4;
+    --white: #FFFFFF;
+
+    --brand-green-rgb: 0, 212, 126;
+    --white-rgb: 255, 255, 255;
+    --black-rgb: 0, 0, 0;
+
+    --brand-green-dark: #059669;
+    --text-secondary: #6B7280;
+    --border-light: #E5E7EB;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -35,8 +52,8 @@ nav {
 }
 
 header {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: var(--white);
+    color: var(--brand-dark);
     padding: 10px 0;
 }
 
@@ -55,7 +72,7 @@ header {
 #logo:hover {
     transform: scale(1.05);
     opacity: 0.85;
-    color: #00D47E;
+    color: var(--brand-green);
 }
 .nav-links a {
     position: relative;
@@ -77,7 +94,7 @@ header {
     width: 100%;
 }
 .nav-links li a {
-    color: #000;
+    color: var(--brand-dark);
     text-decoration: none;
     padding: 8px 14px;
     display: inline-block;
@@ -86,8 +103,8 @@ header {
 }
 
 .nav-links li a:hover {
-    background-color: #f3f4f6;         
-    color: #22c55e;                    
+    background-color: var(--brand-light-gray);         
+    color: var(--brand-green-dark);                    
 }
 
 .content {
@@ -112,28 +129,28 @@ header {
 }
 
 .btn-outline {
-    background: #fff;
-    border: 1px solid #F2F4F4;    
+    background: var(--white);
+    border: 1px solid var(--brand-light-gray);    
 }
 
 
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(var(--black-rgb), 0.2);
     filter: brightness(1.1);
 }
 
 .btn-outline:hover {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--brand-dark);
+    color: var(--white);
     transform: translateY(-3px);
 }
 
 .btn-primary {
-    background: #00D47E;         
-    border: 1px solid #00D47E;
-    color: #fff;
+    background: var(--brand-green);         
+    border: 1px solid var(--brand-green);
+    color: var(--white);
 }
 
 
@@ -146,7 +163,7 @@ header {
     min-height: 600px;
     border-radius: 30px;
     background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)),/* to make it a bit dark*/
+        linear-gradient(rgba(var(--black-rgb), 0.6), rgba(var(--black-rgb), 0.3)),/* to make it a bit dark*/
         url('../assets/images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
@@ -154,7 +171,7 @@ header {
     padding: 80px;
 }
 .hero-text {
-    color: #fff;
+    color: var(--white);
     max-width: 800px;
 }
 
@@ -178,17 +195,14 @@ header {
 }
 
 .hero-link {
-    color: #fff;
+    color: var(--white);
     text-decoration: none;
     padding-bottom: 8px;
-    border-bottom: 1px solid rgba(255,255,255,0.5);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 15px;
+    border-bottom: 1px solid rgba(var(--white-rgb), 0.5);
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    font-size: 15px;
     transition: color 0.3s ease, opacity 0.3s ease;
 }
 
@@ -212,17 +226,17 @@ header {
     width: 260px;
     padding: 15px;
     border-radius: 28px;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(var(--white-rgb), 0.12);
     backdrop-filter: blur(1px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(var(--white-rgb), 0.18);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 
 .glass-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(var(--black-rgb), 0.3);
 }
 
 .glass-card-media {
@@ -235,18 +249,18 @@ header {
 }
 
 .dots-btn:hover {
-    background-color: #ffffff;
+    background-color: var(--white);
     transform: scale(1.1);
 }
 
 .dots-btn:hover span {
-    background-color: #000000;
+    background-color: var(--brand-dark);
 }
 
 
 .glass-card:hover .arrow-circle {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: var(--white);
+    color: var(--brand-dark);
     transform: rotate(45deg);
 }
 
@@ -269,7 +283,7 @@ header {
     border-radius: 50%;
     border: none;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(var(--white-rgb), 0.2);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     display: flex;
@@ -283,19 +297,17 @@ header {
     width: 3px;
     height: 3px;
     border-radius: 50%;
-    background: #fff;
+    background: var(--white);
     display: block;
 }
 
 .glass-card-bottom {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 14px;
     padding: 18px 6px 8px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    color: var(--white);
 }
 
 .glass-card-bottom p {
@@ -311,20 +323,19 @@ header {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    display: flex;
+    border: 1px solid rgba(var(--white-rgb), 0.4);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: #fff;
-    display: inline-flex;
+    color: var(--white);
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 .cards {
     position: absolute;
     bottom: 0;
     right: 0;
-    background: #fff;
+    background: var(--white);
     padding: 30px 40px;
     display: flex;
     gap: 40px;
@@ -342,7 +353,7 @@ header {
     height: 30px;
     background: transparent;
     border-bottom-right-radius: 30px;
-    box-shadow: 15px 15px 0 15px #fff; /* same color as card */
+    box-shadow: 15px 15px 0 15px var(--white); /* same color as card */
 }
 
 /* inverted curve bottom left */
@@ -355,7 +366,7 @@ header {
     height: 30px;
     background: transparent;
     border-bottom-right-radius: 30px;
-    box-shadow: 15px 15px 0 15px #fff; /* same color as card */
+    box-shadow: 15px 15px 0 15px var(--white); /* same color as card */
 }
 
 .card {
@@ -366,18 +377,18 @@ header {
     font-size: 4rem;
     font-weight: 500;
     margin-bottom: 8px;
-    color: #000;
+    color: var(--brand-dark);
 }
 
 .card_paragraph {
-    color: #8D959D;
+    color: var(--brand-gray);
     font-size: 13px;
     line-height: 1.4;
 }
 #trust {
     padding: 80px 5%;
     margin-top: 80px;
-    background-color: #ffffff;
+    background-color: var(--white);
 }
 
 
@@ -401,12 +412,12 @@ header {
     font-weight: 400;
 }
 .light{
-    color: #8D959D;
+    color: var(--brand-gray);
 }
 
 #trust .header p {
     max-width: 420px;
-    color: #6b7280;
+    color: var(--text-secondary);
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 0;
@@ -442,7 +453,7 @@ header {
     width: 210px;
     height: 210px;
     border-radius: 50%;
-    background-color: #f2f4f4;
+    background-color: var(--brand-light-gray);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -452,9 +463,9 @@ header {
 }
 
 #trust .circle:hover {
-    background-color: #ffffff;
-    border-color:#8D959D;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background-color: var(--white);
+    border-color: var(--brand-gray);
+    box-shadow: 0 10px 25px rgba(var(--black-rgb), 0.1);
     transform: translateY(-4px);
 }
 
